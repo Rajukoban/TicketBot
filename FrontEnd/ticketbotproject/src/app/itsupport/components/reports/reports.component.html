@@ -1,0 +1,35 @@
+<div class="reports-container">
+    <mat-card class="report-card">
+      <mat-card-header>
+        <mat-card-title>Reports Overview</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="report-item">
+          <mat-icon>assignment</mat-icon>
+          <h3>Total Tickets Raised</h3>
+          <p>{{ totalTickets }}</p>
+        </div>
+        <div class="report-item">
+          <mat-icon>check_circle</mat-icon>
+          <h3>Total Tickets Solved</h3>
+          <p>{{ solvedTickets }}</p>
+        </div>
+        <div class="report-item">
+          <mat-icon>update</mat-icon>
+          <h3>Total Tickets Updated</h3>
+          <p>{{ updatedTickets }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  
+    
+    <mat-card class="generate-report-card">
+      <mat-card-header>
+        <mat-card-title>Generate Detailed Report</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <button mat-raised-button color="primary" (click)="generateReport()">Generate Report</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

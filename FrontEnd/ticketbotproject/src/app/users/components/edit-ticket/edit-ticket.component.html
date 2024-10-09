@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<h4 mat-dialog-title>Ticket ID : {{data.ticketId}}</h4>
+<div mat-dialog-content>
+    <mat-form-field>
+        <input matInput [(ngModel)]="data.title">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.description">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.createdDate">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select>
+        <mat-option *ngFor="let statusp of statuses" value="{{data.status}}" [(ngModel)]="data.status">{{statusp}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.priority">
+      </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="data" [disabled]="!data.title || !data.description || !data.status || !data.priority">{{data.ticketId?'Update':'Add'}}</button>
+    <button mat-raised-button color="warn" (click)="onNoClick()" style="margin-top: 10px;">Cancel</button>
+
+</div>

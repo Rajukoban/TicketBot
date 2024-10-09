@@ -1,0 +1,19 @@
+<div class="tickets-container">
+    <mat-card *ngFor="let ticket of tickets" class="ticket-card">
+        <mat-card-header>
+          <mat-card-title>{{ ticket.ticket.title }}</mat-card-title>
+          <mat-card-subtitle>{{ ticket.ticket.priority }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ ticket.ticket.description }}</p>
+          <p>Status: {{ ticket.ticket.status }}</p>
+          <p>Created Date: {{ ticket.ticket.createdDate | date:'short' }}</p>
+          <p>Rejected by: {{ticket.approvedBy.name}}</p>
+          <p>Rejected Date: {{ticket.approvalDate | date}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary" (click)="viewDetails(ticket.ticket.ticketId)">View Details</button>
+          <button mat-button color="accent" (click)="updateDetails(ticket.ticket.ticketId)">Update Status</button>
+        </mat-card-actions>
+      </mat-card>
+</div>

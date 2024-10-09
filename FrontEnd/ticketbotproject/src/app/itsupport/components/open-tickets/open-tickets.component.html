@@ -1,0 +1,28 @@
+<h2>Open Tickets</h2>
+<div class="open-tickets-container">
+    <mat-card *ngFor="let ticket of openTickets" class="ticket-card">
+      <mat-card-header>
+        <mat-card-title>{{ ticket.title }}</mat-card-title>
+        <mat-card-subtitle>{{ ticket.priority }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ ticket.description }}</p>
+        <p><strong>Status:</strong> {{ ticket.status }}</p>
+        <p><strong>Created:</strong> {{ ticket.createdDate | date }}</p>
+      </mat-card-content>
+      <mat-card-footer>
+        <p><strong>Assigned to:</strong> {{ ticket.user.name }}</p>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+
+  <div class="footer">
+   <mat-card>
+    <mat-card-footer>
+
+      <a routerLink="">Share Tutorials</a>
+
+    </mat-card-footer>
+   </mat-card>
+  </div>
+  

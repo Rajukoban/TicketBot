@@ -1,0 +1,116 @@
+<div *ngIf="!isProjectMemberLoggedIn && !isReportingLoggedIn && !isITSupportTeamLoggedIn && !isSystemAdminLogggedIn"  >
+<mat-toolbar color="primary" class="navbar">
+  <span class="navbar-brand">Ticket Bot</span>
+  <span class="spacer"></span>
+  <!-- <button mat-button routerLink="/signup" routerLinkActive="active">Register</button> -->
+  <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
+
+</mat-toolbar>
+</div>
+
+<div *ngIf="isReportingLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="navbar-brand">Ticket Bot</span>
+    <mat-menu #menu="matMenu">
+    <button mat-menu-item><a routerLink="/admin/dashborad" routerLinkActive="active">Home</a></button>
+    <button mat-menu-item><a routerLink="/admin/pending" routerLinkActive="active">Pending Approvals</a></button>
+    <button mat-menu-item [matMenuTriggerFor]="ticketManagement1"><a routerLinkActive="active" routerLink="/admin/manage">Ticket Management</a></button>
+    <button mat-menu-item><a routerLink="/admin/categery" routerLinkActive="active">Reports</a></button>
+    <button mat-menu-item><a routerLink="/admin/categery" routerLinkActive="active">Team Performance</a></button>
+  </mat-menu>
+  <mat-menu #ticketManagement1="matMenu">
+    <button mat-menu-item><a routerLink="/ITSupport/alltickets" routerLinkActive="active">All Tickets</a></button>
+    <button mat-menu-item><a routerLink="/ITSupport/opentickets" routerLinkActive="active">Open Tickets</a></button>
+    <button mat-menu-item><a routerLink="/admin/approval" routerLinkActive="active">Approved Tickets</a></button>
+    <button mat-menu-item><a routerLink="/admin/reject" routerLinkActive="active">Rejected Tickets</a></button>
+    <button mat-menu-item><a routerLink="/ITSupport/closedtickets" routerLinkActive="active">Closed Tickets</a></button>
+  </mat-menu>
+  <span class="it"></span>
+  <button mat-button routerLink="/ITSupport/noti" routerLinkActive="active"><mat-icon fontIcon="email"></mat-icon></button>
+  <button mat-button [matMenuTriggerFor]="itsupport"><mat-icon>account_circle</mat-icon></button>
+
+  <mat-menu #itsupport>
+    <button mat-menu-item><a routerLinkActive="active" routerLink="/users/profile"><button mat-button><mat-icon>account_box</mat-icon>MyProfile</button></a></button>
+    <button mat-menu-item><a routerLinkActive="active" (click)="logout()"><button mat-button><mat-icon>exit_to_app</mat-icon>Logout</button></a></button>
+  </mat-menu>
+  </mat-toolbar>
+  </div>
+
+  <div *ngIf="isProjectMemberLoggedIn">
+    <mat-toolbar color="primary" class="navbar">
+      <span class="navbar-brand">Ticket Bot</span>
+      <span class="spacer"></span>
+      <button mat-button routerLink="/users/dashboard" routerLinkActive="active">Home</button>
+      <button mat-button routerLink="/users/raiseticket" routerLinkActive="active">Raise Ticket</button>
+      <button mat-button routerLink="/users/mytickets" routerLinkActive="active">My Tickets</button>
+      <button mat-button routerLink="/users/approved" routerLinkActive="active">Approved Tickets</button>
+      <button mat-button routerLink="/users/rejected" routerLinkActive="active">Rejected Tickets</button>
+      <button mat-button routerLink="/users/tutorial" routerLinkActive="active">Tutorial</button>
+      <button mat-button routerLink="/users/cart" routerLinkActive="active"><mat-icon> add_alert</mat-icon></button>
+      <button mat-button [matMenuTriggerFor]="projectlogout"><mat-icon>account_circle</mat-icon></button>
+
+      <mat-menu #projectlogout>
+        <button mat-menu-item><a routerLinkActive="active" routerLink="/users/profile"><button mat-button><mat-icon>account_box</mat-icon>MyProfile</button></a></button>
+        <button mat-menu-item><a routerLinkActive="active" (click)="logout()"><button mat-button><mat-icon>exit_to_app</mat-icon>Logout</button></a></button>
+      </mat-menu>
+    
+    </mat-toolbar>
+    </div>
+
+    <div *ngIf="isITSupportTeamLoggedIn">
+      <mat-toolbar color="primary" class="navbar">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="navbar-brand">Ticket Bot</span>
+         <mat-menu #menu="matMenu">
+        <button mat-menu-item><a routerLink="/ITSupport/dashboard" routerLinkActive="active"><button mat-button>Home</button></a></button>
+        <button mat-menu-item [matMenuTriggerFor]="ticketManagement"><a routerLink="/ITSupport/manage" routerLinkActive="active"><button mat-button> Ticket Management</button></a></button>
+        <button mat-menu-item><a routerLink="/ITSupport/reports" routerLinkActive="active"><button mat-button>Reports</button></a></button>
+        <button mat-menu-item><a routerLink="/ITSupport/tutorial" routerLinkActive="active"><button mat-button>Share Tutorials</button></a></button>
+        <!-- <button mat-menu-item><a routerLinkActive="active" routerLink="/ITSupport/profile"><button mat-button>Admin Tools</button></a></button> -->
+      </mat-menu>
+
+      <mat-menu #ticketManagement="matMenu">
+        <button mat-menu-item><a routerLink="/ITSupport/alltickets" routerLinkActive="active">All Tickets</a></button>
+        <button mat-menu-item><a routerLink="/ITSupport/opentickets" routerLinkActive="active">Open Tickets</a></button>
+        <button mat-menu-item><a routerLink="/ITSupport/pendingtickets" routerLinkActive="active">Pending Tickets</a></button>
+        <button mat-menu-item><a routerLink="/ITSupport/closedtickets" routerLinkActive="active">Closed Tickets</a></button>
+      </mat-menu>
+      <span class="it"></span>
+      <button mat-button routerLink="/ITSupport/noti" routerLinkActive="active"><mat-icon fontIcon="email"></mat-icon></button>
+      <button mat-button [matMenuTriggerFor]="itsupport"><mat-icon>account_circle</mat-icon></button>
+
+      <mat-menu #itsupport>
+        <button mat-menu-item><a routerLinkActive="active" routerLink="/users/profile"><button mat-button><mat-icon>account_box</mat-icon>MyProfile</button></a></button>
+        <button mat-menu-item><a routerLinkActive="active" (click)="logout()"><button mat-button><mat-icon>exit_to_app</mat-icon>Logout</button></a></button>
+      </mat-menu>
+      </mat-toolbar>
+      </div>
+
+
+      <div *ngIf="isSystemAdminLogggedIn">
+
+        <mat-toolbar color="primary" class="navbar">
+          <span class="navbar-brand">Ticket Bot</span>
+          <span class="spacer"></span>
+          <button mat-button routerLink="/systemadmin/dashborad" routerLinkActive="active">Home</button>
+          <button mat-button routerLink="/systemadmin/usermanage" routerLinkActive="active">User Management</button>
+          <button mat-button routerLink="/ITSupport/alltickets" routerLinkActive="active">Ticket Overview</button>
+          <button mat-button routerLink="/systemadmin/signup" routerLinkActive="active">Add New User</button>
+          <button mat-button [matMenuTriggerFor]="admin"><mat-icon>account_circle</mat-icon></button>
+
+        <mat-menu #admin>
+        <button mat-menu-item><a routerLinkActive="active" routerLink="/users/profile"><button mat-button><mat-icon>account_box</mat-icon>MyProfile</button></a></button>
+        <button mat-menu-item><a routerLinkActive="active" (click)="logout()"><button mat-button><mat-icon>exit_to_app</mat-icon>Logout</button></a></button>
+      </mat-menu>
+        
+        </mat-toolbar>
+        
+        
+      </div>
+
+<router-outlet></router-outlet>

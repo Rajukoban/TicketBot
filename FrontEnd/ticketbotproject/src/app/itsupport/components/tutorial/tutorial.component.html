@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>Upload Tutorial</h2>
+    
+    <div *ngIf="message" class="alert alert-success">
+      {{ message }}
+    </div>
+  
+    <div>
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" [(ngModel)]="tutorial.title" name="title" required>
+    </div>
+    
+    <div>
+      <label for="description">Description</label>
+      <input type="text" class="form-control" id="description" [(ngModel)]="tutorial.description" name="description" required>
+    </div>
+  
+    <div>
+      <label for="pdfFile">Select PDF</label>
+      <input type="file" (change)="selectFile($event)" accept="application/pdf">
+    </div>
+  
+    <button class="btn btn-primary" (click)="upload()">Upload</button>
+  
+    <div *ngIf="progress">
+      <div class="progress">
+        <div class="progress-bar" [style.width.%]="progress">{{ progress }}%</div>
+      </div>
+    </div>
+  </div>
+  

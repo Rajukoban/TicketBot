@@ -1,0 +1,15 @@
+<div *ngIf="ticket">
+    <h2>{{ ticket.title }}</h2>
+    <p><strong>Description:</strong> {{ ticket.description }}</p>
+    <p><strong>Priority:</strong> {{ ticket.priority }}</p>
+    <p><strong>Status:</strong> {{ ticket.status }}</p>
+    <p><strong>Created Date:</strong> {{ ticket.createdDate | date:'short' }}</p>
+    <p><strong>User:</strong> {{ ticket.user.name }}</p>
+  </div>
+
+  <button mat-raised-button><a routerLink="/ITSupport/pendingtickets">Back</a></button>
+  
+  <div *ngIf="!ticket">
+    <p>Loading ticket details...</p>
+  </div>
+  

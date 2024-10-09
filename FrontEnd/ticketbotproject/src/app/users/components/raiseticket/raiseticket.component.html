@@ -1,0 +1,35 @@
+<mat-card>
+    <mat-card-title>Raise New Ticket</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title" required>
+          <mat-error *ngIf="ticketForm.get('title')?.hasError('required')">Title is required</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" required></textarea>
+          <mat-error *ngIf="ticketForm.get('description')?.hasError('required')">Description is required</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Priority</mat-label>
+          <mat-select formControlName="priority" required>
+            <mat-option *ngFor="let priority of priorities" [value]="priority">{{ priority }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status" required>
+            <mat-option *ngFor="let status of statuses" [value]="status">{{ status }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" type="submit" [disabled]="!ticketForm.valid">Submit Ticket</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

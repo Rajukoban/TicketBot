@@ -1,0 +1,21 @@
+<div *ngIf="ticket">
+    <h2>{{ ticket.title }}</h2>
+    <p><strong>Description:</strong> {{ ticket.description }}</p>
+    <p><strong>Priority:</strong> {{ ticket.priority }}</p>
+    <p><strong>Status:</strong> {{ ticket.status }}</p>
+    <p>Created Data: <strong>{{ticket.createdDate| date:'short'}}</strong></p>
+    <p><strong>User:</strong> {{ ticket.user.name }}</p>
+  </div>
+
+  <div class="spacer">
+    <button mat-raised-button color="primary" (click)="approval(ticket.ticketId)">Approved</button>
+    <button mat-raised-button color="accent" (click)="reject(ticket.ticketId)">Rejected</button>
+  </div>
+
+  <div>
+    <button mat-raised-button><a routerLink="/admin/pending">Back</a></button>
+  </div>
+  
+  <div *ngIf="!ticket">
+    <p>Loading ticket details...</p>
+  </div>
